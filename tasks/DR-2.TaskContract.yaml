@@ -1,0 +1,19 @@
+apiVersion: orun.io/v1
+kind: TaskContract
+metadata:
+  name: DR-2
+  title: "The site on Workers"
+spec:
+  goal: Vercel's Drupal Marketing Site runs as one Cloudflare Worker with Static Assets, every page cached in R2 and re-rendered on Drupal's call through the Worker's own binding, Drupal's preview opening drafts, live with sample content before a Drupal is connected
+  affects:
+    - apps/web
+    - infra/terraform/cloudflare-r2
+    - tests/web
+    - pnpm-lock.yaml
+    - pnpm-workspace.yaml
+    - README.md
+  doneWhen:
+    - a spike proves next-drupal's router, on-demand revalidation and preview on OpenNext with the R2 cache
+    - pnpm typecheck, lint, test and build are green with no Drupal
+    - wrangler dev serves the sample site without a 500, and a connected one from cached pages revalidated through /api/revalidate, with a draft in preview
+  gates: []
