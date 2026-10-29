@@ -1,0 +1,37 @@
+// GENERATED from wrangler.template.jsonc by tooling/wire — edit the
+// template, not this file. The committed copy is the fixture render
+// (`pnpm run wire:fixture`); every Orun lane renders its own environment.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cms-drupal-web-stage",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "observability": { "enabled": true },
+  // No `vars`: the site's name is site.ts and the Drupal it reads is decided
+  // at build (next.config.ts `env`, from the environment's Orun secrets).
+  // DRUPAL_CLIENT_ID / DRUPAL_CLIENT_SECRET (the OAuth client preview reads
+  // drafts with) and DRUPAL_REVALIDATE_SECRET (the `?secret=` /api/revalidate
+  // checks) are Worker secrets the deploy hands over
+  // (tooling/wire/worker-secrets.mjs); without the first two preview cannot
+  // read a draft, without the last the route refuses every call.
+
+  // The Next.js incremental cache — every rendered page — in the bucket
+  // infra/terraform/cloudflare-r2 provisions.
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "stg-cms-drupal-stage",
+    },
+  ],
+  // `res.revalidate` (and the queue's re-renders) request the page from the
+  // Worker itself, which a Worker can only do through a service binding to
+  // its own name.
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "cms-drupal-web-stage" },
+  ],
+}

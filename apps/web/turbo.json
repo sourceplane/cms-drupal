@@ -1,0 +1,11 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".open-next/**", ".next/**", "!.next/cache/**"],
+      "env": ["DRUPAL_BASE_URL", "DRUPAL_SITE_ID", "DRUPAL_FRONT_PAGE", "NEXT_PUBLIC_SITE_URL"]
+    }
+  }
+}
