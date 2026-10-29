@@ -1,0 +1,13 @@
+apiVersion: orun.io/v1
+kind: TaskContract
+metadata:
+  name: DR-1
+  title: "The cms-drupal epic doc set"
+spec:
+  goal: The epic's README, design, plan, risks and status, and the three task contracts, are on main
+  affects:
+    - specs/epics/cms-drupal
+    - tasks
+  doneWhen:
+    - the doc set and DR-1, DR-2 and DR-3 are merged
+  gates: []

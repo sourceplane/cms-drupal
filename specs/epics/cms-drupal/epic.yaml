@@ -1,0 +1,30 @@
+# The epic's declaration. metadata.name equals the directory name; metadata.key
+# is the task-key prefix this epic reserves (DR → DR-1, DR-2, …). Owner, target
+# date and health are the platform's — never written here.
+apiVersion: orun.io/v1
+kind: Epic
+metadata:
+  name: cms-drupal
+  key: DR
+spec:
+  title: "Vercel's Drupal Marketing Site on Cloudflare Workers"
+  summary: "Vercel's Drupal Marketing Site template — next-drupal's example-marketing: a Next.js Pages Router site read from a headless Drupal over JSON:API, landing pages from paragraphs, a blog, a properties view, menus, English and Spanish, Drupal's on-demand revalidation and preview — runs as one Cloudflare Worker with Static Assets, every page cached in R2 and re-rendered through the Worker's own service binding, live with sample content before a Drupal is connected, and becomes an Orun baseline that takes a new site from nothing to live on stage and prod in one landing."
+  state: started
+  milestones:
+    - name: "DR0 — the spec"
+      exitCriteria:
+        - "the repository is born with its intent, CI, tooling and spec index, and this doc set and the task contracts are on main"
+      tasks: [DR-1]
+    - name: "DR1 — the site on Workers"
+      exitCriteria:
+        - "a spike proves next-drupal's router, on-demand revalidation and preview on OpenNext with the R2 cache, against a stand-in Drupal"
+        - "apps/web is the template on Next 16.3.8 built by OpenNext into one Worker with Static Assets, the R2 incremental cache and the self-reference binding"
+        - "typecheck, lint, tests/web and build are green with no Drupal"
+        - "with no Drupal every page renders the sample Drupal under the notice, never a 500; connected, wrangler dev serves Drupal's pages, reuses the cache, revalidates on Drupal's call and opens a draft in preview"
+      tasks: [DR-2]
+    - name: "DR2 — a baseline"
+      exitCriteria:
+        - "blueprint.yaml (the console card) and repo-blueprint.yaml (the build) take a new site from nothing to live on stage and prod in one landing, then record it"
+        - "a site built from it carries the product only, renamed throughout to its own name, repository, Worker and buckets, with the template's licence intact"
+        - "Baseline CI is green: contract tests, the wiring path, generated component docs, the blueprint read by the pinned orun, the leak gate, the offline bootstrap and the end-to-end tier — the stage lane's steps in a staged tree, served as born, then connected to a stand-in Drupal and browsed"
+      tasks: [DR-3]
