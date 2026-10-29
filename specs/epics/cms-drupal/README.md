@@ -14,7 +14,7 @@ its owner connects a Drupal, and renders theirs once they set its URL.**
 
 | | |
 |---|---|
-| Status | In progress — DR1 on main: the site runs on Workers |
+| Status | ✅ Shipped (`baseline-v1`) — proven offline in Baseline CI; not yet live (risk DR-A) |
 | Upstream | [chapter-three/next-drupal](https://github.com/chapter-three/next-drupal) `examples/example-marketing` (MIT), at `80a89f1` (2026-10-23) — the template [Vercel lists](https://vercel.com/templates/next.js/drupal-nextjs-marketing-site) |
 | Reference | [cms-sanity](https://github.com/sourceplane/cms-sanity) (the CMS-frontend baseline shape, an unconnected state), [sfcc-commerce](https://github.com/sourceplane/sfcc-commerce) (the R2 cache root, the wiring, Worker secrets and a connected e2e against a stand-in) |
 | Key | `DR` |

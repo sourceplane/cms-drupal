@@ -4,7 +4,7 @@
 |---|---|---|
 | DR0 — the spec | ✅ | DR-1 |
 | DR1 — the site on Workers | ✅ | DR-2 |
-| DR2 — a baseline | planned | DR-3 |
+| DR2 — a baseline | ✅ | DR-3, tagged `baseline-v1` |
 
 ## Departures from the upstream template
 
