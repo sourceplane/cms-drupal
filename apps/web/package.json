@@ -1,0 +1,43 @@
+{
+  "name": "@app/web",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build --webpack && opennextjs-cloudflare build --skipBuild --skipWranglerConfigCheck",
+    "start": "next start -p 3001",
+    "preview": "opennextjs-cloudflare preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "wire:fixture": "node ../../tooling/wire/render.mjs --template wrangler.template.jsonc --out wrangler.jsonc --map wiring.fixture.json --env stage"
+  },
+  "dependencies": {
+    "@opennextjs/cloudflare": "1.20.11",
+    "@tanstack/react-query": "5.105.0",
+    "classnames": "2.5.1",
+    "drupal-jsonapi-params": "2.3.1",
+    "html-react-parser": "5.2.17",
+    "next": "16.3.8",
+    "next-drupal": "2.0.1",
+    "nprogress": "0.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "7.91.0"
+  },
+  "devDependencies": {
+    "@app/eslint-config": "workspace:*",
+    "@tailwindcss/forms": "0.5.11",
+    "@tailwindcss/typography": "0.5.20",
+    "@types/node": "22.13.4",
+    "@types/nprogress": "0.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "autoprefixer": "10.6.2",
+    "eslint": "^9.27.0",
+    "postcss": "8.5.6",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.7.3",
+    "wrangler": "^4.151.0"
+  }
+}
